@@ -64,14 +64,14 @@ export default function Room5SolutionScreen({ onComplete }) {
 
         {/* Scuderia Ferrari crest */}
         <div className={styles.horse} aria-hidden="true">
-          <img src="/Ferrari%20Logo.svg" alt="Scuderia Ferrari" className={styles.ferrariCrest} />
+          <img src={`${import.meta.env.BASE_URL}Ferrari%20Logo.svg`} alt="Scuderia Ferrari" className={styles.ferrariCrest} />
         </div>
 
         <p className={styles.message}>{ROOM5_SOLUTION.message}</p>
 
         {/* Driver signature */}
         <div className={styles.signatureWrap} aria-hidden="true">
-          <img src="/unterschrift.png" alt="" className={styles.signature} />
+          <img src={`${import.meta.env.BASE_URL}unterschrift.png`} alt="" className={styles.signature} />
         </div>
 
         {step >= 1 && (

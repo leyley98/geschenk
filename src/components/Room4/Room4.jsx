@@ -151,7 +151,7 @@ export default function Room4({ onComplete }) {
 
       {/* Header */}
       <header className={styles.header}>
-        <img src="/logo_fantasy.svg" className={styles.fantasyLogo} alt="" aria-hidden="true" />
+        <img src={`${import.meta.env.BASE_URL}logo_fantasy.svg`} className={styles.fantasyLogo} alt="" aria-hidden="true" />
         <div className={styles.headerLeft}>
           <span className={styles.roomTag}>✦ RAUM 4 - DIE BIBLIOTHEK ✦</span>
           <h1 className={styles.roomTitle}>Valdrath</h1>

@@ -59,13 +59,13 @@ export default function Room5({ onComplete }) {
       <GarageAtmosphere />
 
       {/* Monza circuit watermark */}
-      <img src="/Monza.svg" className={styles.monzaWatermark} alt="" aria-hidden="true" />
+      <img src={`${import.meta.env.BASE_URL}Monza.svg`} className={styles.monzaWatermark} alt="" aria-hidden="true" />
 
       {/* Atmospheric driver silhouette */}
-      <img src="/Ferrari%20Fahrer.png" className={styles.driverImg} alt="" aria-hidden="true" />
+      <img src={`${import.meta.env.BASE_URL}Ferrari%20Fahrer.png`} className={styles.driverImg} alt="" aria-hidden="true" />
 
       {/* Driver signature - lower left */}
-      <img src="/unterschrift.svg" className={styles.signatureCorner} alt="" aria-hidden="true" />
+      <img src={`${import.meta.env.BASE_URL}unterschrift.svg`} className={styles.signatureCorner} alt="" aria-hidden="true" />
 
       {/* Ferrari red LED strip */}
       <div className={styles.ledStrip} />
@@ -75,7 +75,7 @@ export default function Room5({ onComplete }) {
         <div className={styles.headerLeft}>
           {/* Scuderia Ferrari crest */}
           <div className={styles.horseWrap}>
-            <img src="/Ferrari%20Logo.svg" alt="Scuderia Ferrari" className={styles.ferrariLogo} />
+            <img src={`${import.meta.env.BASE_URL}Ferrari%20Logo.svg`} alt="Scuderia Ferrari" className={styles.ferrariLogo} />
           </div>
           {/* Text branding */}
           <div className={styles.headerBranding}>
@@ -85,7 +85,7 @@ export default function Room5({ onComplete }) {
           </div>
         </div>
         {/* F1 logo */}
-        <img src="/F1%20Logo.svg" alt="Formula 1" className={styles.f1Logo} aria-hidden="true" />
+        <img src={`${import.meta.env.BASE_URL}F1%20Logo.svg`} alt="Formula 1" className={styles.f1Logo} aria-hidden="true" />
 
         <div className={styles.headerStats}>
           <div className={styles.statBlock}>
@@ -196,7 +196,7 @@ export default function Room5({ onComplete }) {
       )}
 
       {/* Floating YouTube player */}
-      <YoutubePlayer src="/audio/ferrari.mp4" />
+      <YoutubePlayer src={`${import.meta.env.BASE_URL}audio/ferrari.mp4`} />
 
       {/* Challenge modal */}
       {activeChallenge && (

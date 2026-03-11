@@ -137,7 +137,7 @@ export default function ChallengeModal({ challenge, onComplete, onClose }) {
           <>
             {challenge.showCircuit && (
               <div className={styles.circuitPreview}>
-                <img src="/Monza.svg" alt="Monza Circuit" className={styles.circuitImg} />
+                <img src={`${import.meta.env.BASE_URL}Monza.svg`} alt="Monza Circuit" className={styles.circuitImg} />
               </div>
             )}
             <p className={styles.question}>{challenge.question}</p>

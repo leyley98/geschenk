@@ -18,7 +18,7 @@ export const CHALLENGES = [
   {
     id: "manchild",
     slot: 1, letter: "M",
-    audioSrc: "/audio/manchild.m4a",
+    audioSrc: `${import.meta.env.BASE_URL}audio/manchild.m4a`,
     emoji: "🎀",
     title: "manchild",
     artist: "Sabrina Carpenter",
@@ -36,7 +36,7 @@ export const CHALLENGES = [
   {
     id: "willow",
     slot: 2, letter: "I",
-    audioSrc: "/audio/willow.m4a",
+    audioSrc: `${import.meta.env.BASE_URL}audio/willow.m4a`,
     emoji: "🌿",
     title: "willow",
     artist: "Taylor Swift",
@@ -54,7 +54,7 @@ export const CHALLENGES = [
   {
     id: "wonderland",
     slot: 3, letter: "D",
-    audioSrc: "/audio/wonderland.m4a",
+    audioSrc: `${import.meta.env.BASE_URL}audio/wonderland.m4a`,
     emoji: "🐇",
     title: "Wonderland",
     artist: "Taylor Swift",
@@ -72,7 +72,7 @@ export const CHALLENGES = [
   {
     id: "which-witch",
     slot: 4, letter: "N",
-    audioSrc: "/audio/which-witch.m4a",
+    audioSrc: `${import.meta.env.BASE_URL}audio/which-witch.m4a`,
     emoji: "🔮",
     title: "Which Witch",
     artist: "Florence + the Machine",
@@ -90,7 +90,7 @@ export const CHALLENGES = [
   {
     id: "red-wine-supernova",
     slot: 5, letter: "I",
-    audioSrc: "/audio/red-wine-supernova.m4a",
+    audioSrc: `${import.meta.env.BASE_URL}audio/red-wine-supernova.m4a`,
     emoji: "🍷",
     title: "Red Wine Supernova",
     artist: "Chappell Roan",
@@ -108,7 +108,7 @@ export const CHALLENGES = [
   {
     id: "peanut-butter-jelly",
     slot: 6, letter: "G",
-    audioSrc: "/audio/peanut-butter-jelly.m4a",
+    audioSrc: `${import.meta.env.BASE_URL}audio/peanut-butter-jelly.m4a`,
     emoji: "🎉",
     title: "Peanut Butter Jelly",
     artist: "Galantis",
@@ -126,7 +126,7 @@ export const CHALLENGES = [
   {
     id: "the-night-we-met",
     slot: 7, letter: "H",
-    audioSrc: "/audio/the-night-we-met.m4a",
+    audioSrc: `${import.meta.env.BASE_URL}audio/the-night-we-met.m4a`,
     emoji: "🌙",
     title: "The Night We Met",
     artist: "Lord Huron",
@@ -144,7 +144,7 @@ export const CHALLENGES = [
   {
     id: "the-chain",
     slot: 8, letter: "T",
-    audioSrc: "/audio/the-chain.m4a",
+    audioSrc: `${import.meta.env.BASE_URL}audio/the-chain.m4a`,
     emoji: "⛓️",
     title: "The Chain",
     artist: "Fleetwood Mac",
