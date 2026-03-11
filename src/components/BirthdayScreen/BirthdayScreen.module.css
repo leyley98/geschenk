@@ -1,0 +1,335 @@
+/* ── Page ──────────────────────────────────────────────────────── */
+.page {
+  min-height: 100vh;
+  background:
+    radial-gradient(ellipse at 50% 0%,   rgba(212,160,23,0.10) 0%, transparent 55%),
+    radial-gradient(ellipse at 15% 85%,  rgba(168,85,247,0.09) 0%, transparent 50%),
+    radial-gradient(ellipse at 85% 60%,  rgba(244,114,182,0.08) 0%, transparent 50%),
+    linear-gradient(180deg, #04020e 0%, #07040f 100%);
+  color: #e2d9f3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  padding: 48px 20px 64px;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fadeOut {
+  opacity: 0;
+  transform: scale(1.04);
+  pointer-events: none;
+}
+
+/* ── Stars ─────────────────────────────────────────────────────── */
+.stars {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.star {
+  position: absolute;
+  border-radius: 50%;
+  background: #fff;
+  animation: twinkle 3s ease-in-out infinite alternate;
+}
+
+@keyframes twinkle {
+  from { opacity: var(--opacity, 0.3); transform: scale(1); }
+  to   { opacity: calc(var(--opacity, 0.3) * 0.25); transform: scale(0.7); }
+}
+
+/* ── Balloons ──────────────────────────────────────────────────── */
+.balloons {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.balloon {
+  position: absolute;
+  bottom: -120px;
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  opacity: 0.22;
+  animation: floatUp ease-in-out infinite both;
+}
+
+.balloon::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 0;
+  border-left: 1px dashed currentColor;
+}
+
+.balloonString {
+  position: absolute;
+  bottom: -28px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 28px;
+  border-left: 1.5px dashed rgba(255,255,255,0.3);
+}
+
+@keyframes floatUp {
+  0%   { transform: translateY(0) rotate(-4deg);   opacity: 0; }
+  10%  { opacity: 0.22; }
+  50%  { transform: translateY(-55vh) rotate(4deg); }
+  90%  { opacity: 0.15; }
+  100% { transform: translateY(-110vh) rotate(-3deg); opacity: 0; }
+}
+
+/* ── Ambient glows ─────────────────────────────────────────────── */
+.glow1 {
+  position: fixed;
+  top: -15%;
+  left: 25%;
+  width: 700px;
+  height: 700px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(212,160,23,0.08) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+  animation: glowPulse 7s ease-in-out infinite alternate;
+}
+
+.glow2 {
+  position: fixed;
+  bottom: -10%;
+  right: 15%;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(168,85,247,0.07) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+  animation: glowPulse 9s ease-in-out infinite alternate-reverse;
+}
+
+.glow3 {
+  position: fixed;
+  top: 40%;
+  left: -10%;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(244,114,182,0.06) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+  animation: glowPulse 11s ease-in-out infinite alternate;
+}
+
+@keyframes glowPulse {
+  from { transform: scale(1);   opacity: 0.6; }
+  to   { transform: scale(1.2); opacity: 1; }
+}
+
+/* ── Content ───────────────────────────────────────────────────── */
+.content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  max-width: 640px;
+  width: 100%;
+  text-align: center;
+}
+
+/* ── Age badge ─────────────────────────────────────────────────── */
+.ageBadge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, rgba(255,215,0,0.18), rgba(212,160,23,0.06) 70%);
+  border: 2px solid rgba(212,160,23,0.35);
+  box-shadow:
+    0 0 40px rgba(212,160,23,0.2),
+    0 0 80px rgba(212,160,23,0.08),
+    inset 0 0 30px rgba(212,160,23,0.05);
+  animation: badgeEntrance 1s cubic-bezier(0.34, 1.56, 0.64, 1) both,
+             badgeFloat 4s ease-in-out 1s infinite alternate;
+}
+
+@keyframes badgeEntrance {
+  from { transform: scale(0) rotate(-20deg); opacity: 0; }
+  to   { transform: scale(1) rotate(0deg);   opacity: 1; }
+}
+
+@keyframes badgeFloat {
+  from { transform: translateY(0) rotate(-1deg); }
+  to   { transform: translateY(-8px) rotate(1deg); }
+}
+
+.ageNumber {
+  font-family: 'Oswald', sans-serif;
+  font-size: 3.2rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #fff8e7 0%, #ffd700 40%, #d4a017 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 16px rgba(212,160,23,0.5));
+  line-height: 1;
+}
+
+/* ── Headline ──────────────────────────────────────────────────── */
+.headlineBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  animation: fadeUp 0.9s 0.2s cubic-bezier(0.16,1,0.3,1) both;
+}
+
+.preheadline {
+  font-family: 'Barlow Condensed', 'Oswald', sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 5px;
+  color: rgba(212,160,23,0.6);
+  text-transform: uppercase;
+}
+
+.headline {
+  margin: 0;
+  font-family: 'Oswald', sans-serif;
+  font-size: clamp(2.4rem, 8vw, 4rem);
+  font-weight: 700;
+  letter-spacing: 4px;
+  line-height: 1.15;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, #fff8e7 0%, #ffd700 25%, #d4a017 50%, #ff6b9d 75%, #a855f7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 30px rgba(212,160,23,0.35));
+}
+
+/* ── Divider ───────────────────────────────────────────────────── */
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  animation: fadeUp 0.9s 0.4s cubic-bezier(0.16,1,0.3,1) both;
+}
+
+.dividerLine {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(212,160,23,0.35), transparent);
+}
+
+.dividerGem {
+  font-size: 1.4rem;
+  animation: gemSpin 10s linear infinite;
+  display: block;
+}
+
+@keyframes gemSpin {
+  from { transform: rotateY(0deg); }
+  to   { transform: rotateY(360deg); }
+}
+
+/* ── Message ───────────────────────────────────────────────────── */
+.message {
+  font-family: 'Courier Prime', monospace;
+  font-size: 1.05rem;
+  color: #b0a0cc;
+  line-height: 1.8;
+  margin: 0;
+  animation: fadeUp 0.9s 0.55s cubic-bezier(0.16,1,0.3,1) both;
+}
+
+.messageSub {
+  font-size: 0.9rem;
+  color: #7a6a94;
+  font-style: italic;
+}
+
+/* ── Button ────────────────────────────────────────────────────── */
+.btn {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: linear-gradient(135deg, #1a0a30, #2d1054);
+  border: 1.5px solid rgba(212,160,23,0.4);
+  border-radius: 14px;
+  color: #e2d9f3;
+  font-family: 'Barlow Condensed', 'Oswald', sans-serif;
+  font-size: 1.1rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  padding: 16px 40px;
+  cursor: pointer;
+  transition: transform 0.2s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.2s;
+  box-shadow:
+    0 4px 24px rgba(212,160,23,0.15),
+    0 0 0 0 rgba(212,160,23,0);
+  animation: fadeUp 0.9s 0.7s cubic-bezier(0.16,1,0.3,1) both;
+}
+
+.btn:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow:
+    0 10px 36px rgba(212,160,23,0.28),
+    0 0 0 3px rgba(212,160,23,0.08);
+  border-color: rgba(212,160,23,0.7);
+}
+
+.btn:active {
+  transform: translateY(-1px) scale(0.99);
+}
+
+.btnIcon { font-size: 1.3rem; }
+
+.btnText { flex: 1; }
+
+.btnArrow {
+  font-size: 0.7rem;
+  opacity: 0.5;
+  transition: transform 0.2s, opacity 0.2s;
+}
+
+.btn:hover .btnArrow {
+  transform: translateX(4px);
+  opacity: 1;
+}
+
+/* ── Footer ────────────────────────────────────────────────────── */
+.footer {
+  font-family: 'Barlow Condensed', 'Oswald', sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: #3a2a50;
+  margin: 0;
+  animation: fadeUp 0.9s 0.85s cubic-bezier(0.16,1,0.3,1) both;
+}
+
+/* ── Shared ────────────────────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Responsive ────────────────────────────────────────────────── */
+@media (max-width: 500px) {
+  .ageBadge   { width: 90px; height: 90px; }
+  .ageNumber  { font-size: 2.4rem; }
+  .btn        { padding: 14px 28px; font-size: 1rem; letter-spacing: 3px; }
+}

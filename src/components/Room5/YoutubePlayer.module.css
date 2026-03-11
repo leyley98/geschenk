@@ -1,0 +1,64 @@
+.wrap {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 100;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow:
+    0 8px 32px rgba(0,0,0,0.6),
+    0 0 0 2px rgba(220,0,0,0.7);
+  background: #0a0a0a;
+  transition: width 0.3s ease, box-shadow 0.2s;
+  width: 280px;
+}
+
+.minimized {
+  width: 160px;
+  box-shadow:
+    0 4px 16px rgba(0,0,0,0.5),
+    0 0 0 2px rgba(220,0,0,0.5);
+}
+
+.titleBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #DC0000;
+  padding: 6px 10px;
+  height: 32px;
+}
+
+.title {
+  font-family: 'Barlow Condensed', 'Oswald', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #fff;
+  white-space: nowrap;
+}
+
+.toggleBtn {
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.8);
+  font-size: 0.7rem;
+  cursor: pointer;
+  padding: 2px 4px;
+  line-height: 1;
+  transition: color 0.15s;
+}
+
+.toggleBtn:hover {
+  color: #fff;
+}
+
+.frame {
+  display: block;
+  width: 280px;
+  height: 158px;
+  border: none;
+  background: #000;
+  object-fit: cover;
+}

@@ -1,0 +1,244 @@
+/* ── Scene wrapper ─────────────────────────────────────────────────────────── */
+.scene {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: 20px 28px 24px;
+  overflow-y: auto;
+  position: relative;
+  z-index: 2;
+}
+
+/* ── Hint text ─────────────────────────────────────────────────────────────── */
+.hint {
+  font-family: 'Courier New', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 1.5px;
+  color: rgba(232, 121, 249, 0.5);
+  text-align: center;
+  margin: 0 0 18px;
+}
+
+/* ── Letter challenge grid ─────────────────────────────────────────────────── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 14px;
+  width: 100%;
+}
+
+/* ── Tile base ─────────────────────────────────────────────────────────────── */
+.tile {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 18px 12px 16px;
+  background: rgba(20, 0, 24, 0.72);
+  border: 1.5px solid rgba(232, 121, 249, 0.22);
+  border-radius: 0;
+  clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px));
+  color: #fce7f3;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s;
+  overflow: hidden;
+  text-align: center;
+}
+
+.tileActive:hover {
+  border-color: rgba(232, 121, 249, 0.65);
+  box-shadow:
+    0 0 20px rgba(232, 121, 249, 0.18),
+    0 8px 28px rgba(0, 0, 0, 0.5);
+  transform: translateY(-2px);
+}
+
+.tileSolved {
+  border-color: rgba(134, 239, 172, 0.28);
+  opacity: 0.75;
+  cursor: default;
+}
+
+/* Pink left accent bar on active tiles */
+.tileActive::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 14px;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(180deg, #e879f9 0%, #f472b6 100%);
+}
+
+/* Corner slot number */
+.tileSlot {
+  position: absolute;
+  top: 6px;
+  left: 8px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 1px;
+  color: rgba(232, 121, 249, 0.4);
+}
+
+/* Check / sparkle top-right */
+.tileStatus {
+  position: absolute;
+  top: 5px;
+  right: 9px;
+  font-size: 0.72rem;
+  color: rgba(232, 121, 249, 0.45);
+}
+.tileSolved .tileStatus {
+  color: #86efac;
+}
+
+.tileEmoji {
+  font-size: 2rem;
+  line-height: 1;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.5));
+  pointer-events: none;
+}
+
+.tileTitle {
+  font-family: 'Barlow Condensed', 'Oswald', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #fce7f3;
+  pointer-events: none;
+}
+
+.tileSubtitle {
+  font-family: 'Courier New', monospace;
+  font-size: 0.6rem;
+  color: rgba(232, 121, 249, 0.45);
+  pointer-events: none;
+}
+
+/* Collected letter display */
+.tileLetter {
+  font-size: 1.6rem;
+  font-weight: 900;
+  background: linear-gradient(135deg, #e879f9 0%, #f472b6 50%, #fbbf24 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  pointer-events: none;
+  filter: drop-shadow(0 0 8px rgba(232, 121, 249, 0.5));
+}
+
+/* Bottom glow line */
+.tileGlow {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #e879f9, #f472b6, transparent);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.tileActive:hover .tileGlow {
+  opacity: 1;
+}
+.tileSolved .tileGlow {
+  background: linear-gradient(90deg, transparent, #86efac, transparent);
+  opacity: 0.4;
+}
+
+/* ── Easter egg section ────────────────────────────────────────────────────── */
+.eggSection {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.eggLabel {
+  font-family: 'Courier New', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: rgba(232, 121, 249, 0.32);
+  text-align: center;
+  margin: 0;
+}
+
+.eggRow {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* ── Bonus tile ─────────────────────────────────────────────────────────────── */
+.bonusTile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 10px 14px;
+  background: rgba(20, 0, 24, 0.55);
+  border: 1px dashed rgba(232, 121, 249, 0.18);
+  border-radius: 12px;
+  color: rgba(252, 231, 243, 0.55);
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+  position: relative;
+}
+
+.bonusTile:hover {
+  border-color: rgba(232, 121, 249, 0.45);
+  background: rgba(232, 121, 249, 0.07);
+  color: rgba(252, 231, 243, 0.85);
+}
+
+.bonusTileVisited {
+  opacity: 0.5;
+  border-style: solid;
+  border-color: rgba(134, 239, 172, 0.2);
+}
+
+.bonusEmoji {
+  font-size: 1.3rem;
+  line-height: 1;
+}
+
+.bonusTitle {
+  font-family: 'Courier New', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 1px;
+  text-align: center;
+  max-width: 70px;
+}
+
+.bonusCheck {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  font-size: 0.6rem;
+  color: #86efac;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── Responsive ────────────────────────────────────────────────────────────── */
+@media (max-width: 560px) {
+  .scene   { padding: 14px 14px 18px; }
+  .grid    { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 10px; }
+  .tileEmoji { font-size: 1.6rem; }
+  .tileTitle { font-size: 0.75rem; }
+  .bonusTile { padding: 8px 10px; }
+  .bonusEmoji { font-size: 1.1rem; }
+}

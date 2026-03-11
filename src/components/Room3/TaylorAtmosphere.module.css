@@ -1,0 +1,181 @@
+/* Full-screen fixed overlay, behind content, no pointer events */
+.atmosphere {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+/* ── Sun glow ────────────────────────────────────────────────────────────── */
+.sun {
+  position: absolute;
+  top: -80px;
+  right: 8%;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 252, 220, 0.95) 0%, rgba(255, 220, 100, 0.6) 35%, transparent 70%);
+  filter: blur(8px);
+  animation: sunPulse 8s ease-in-out infinite alternate;
+}
+
+.sunHaze {
+  position: absolute;
+  top: -120px;
+  right: 0%;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 240, 160, 0.18) 0%, rgba(255, 200, 80, 0.06) 50%, transparent 70%);
+  filter: blur(20px);
+}
+
+@keyframes sunPulse {
+  from { opacity: 0.85; transform: scale(1); }
+  to   { opacity: 1;    transform: scale(1.06); }
+}
+
+/* ── Light rays from sun ─────────────────────────────────────────────────── */
+.ray {
+  position: fixed;
+  top: 0;
+  right: 10%;
+  width: 2px;
+  height: 75vh;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 248, 200, 0) 0%,
+    rgba(255, 248, 200, 0.18) 10%,
+    rgba(255, 248, 200, 0.06) 50%,
+    transparent 100%
+  );
+  transform-origin: top center;
+  transform: rotate(var(--angle, 0deg));
+  animation: rayShimmer 6s ease-in-out var(--ray-delay, 0s) infinite alternate;
+}
+
+@keyframes rayShimmer {
+  from { opacity: 0.4; }
+  to   { opacity: 0.9; }
+}
+
+/* ── Clouds ──────────────────────────────────────────────────────────────── */
+.cloud {
+  position: fixed;
+  filter: drop-shadow(0 6px 12px rgba(100, 160, 210, 0.2));
+}
+
+/* Cloud puffs - circles composited into a fluffy cloud shape */
+.cp1, .cp2, .cp3, .cp4 {
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+  bottom: 0;
+}
+.cp1 { left: 8%;  bottom: 0; }
+.cp2 { left: 28%; bottom: 4%; }
+.cp3 { left: 55%; bottom: 2%; }
+.cp4 { left: 74%; bottom: 0; }
+
+.cloudLTR {
+  left: -320px;
+  animation: driftLTR linear infinite;
+}
+.cloudRTL {
+  right: -320px;
+  animation: driftRTL linear infinite;
+}
+
+@keyframes driftLTR {
+  0%   { transform: translateX(0)              translateY(0px);  }
+  30%  { transform: translateX(30vw)           translateY(-8px); }
+  60%  { transform: translateX(60vw)           translateY(3px);  }
+  100% { transform: translateX(calc(100vw + 320px)) translateY(0px); }
+}
+@keyframes driftRTL {
+  0%   { transform: translateX(0)               translateY(0px);  }
+  30%  { transform: translateX(-30vw)            translateY(-6px); }
+  60%  { transform: translateX(-60vw)            translateY(4px);  }
+  100% { transform: translateX(calc(-100vw - 320px)) translateY(0px); }
+}
+
+/* ── Seagulls ────────────────────────────────────────────────────────────── */
+.seagull {
+  position: fixed;
+}
+
+.seagullLTR {
+  left: -80px;
+  animation: seagullFlyLTR linear infinite;
+}
+.seagullRTL {
+  right: -80px;
+  animation: seagullFlyRTL linear infinite;
+}
+
+@keyframes seagullFlyLTR {
+  0%   { transform: translateX(0)              translateY(0px)   scaleY(1);    }
+  15%  { transform: translateX(15vw)           translateY(-14px) scaleY(0.92); }
+  35%  { transform: translateX(35vw)           translateY(8px)   scaleY(1.04); }
+  55%  { transform: translateX(55vw)           translateY(-10px) scaleY(0.94); }
+  75%  { transform: translateX(75vw)           translateY(5px)   scaleY(1.02); }
+  100% { transform: translateX(calc(100vw + 160px)) translateY(0px) scaleY(1); }
+}
+@keyframes seagullFlyRTL {
+  0%   { transform: translateX(0)               scaleX(-1) translateY(0px);    }
+  20%  { transform: translateX(-20vw)            scaleX(-1) translateY(-12px);  }
+  45%  { transform: translateX(-45vw)            scaleX(-1) translateY(7px);    }
+  70%  { transform: translateX(-70vw)            scaleX(-1) translateY(-9px);   }
+  100% { transform: translateX(calc(-100vw - 160px)) scaleX(-1) translateY(0px); }
+}
+
+/* ── Ocean ───────────────────────────────────────────────────────────────── */
+.ocean {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 22vh;
+  overflow: hidden;
+}
+
+.wave {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 200%;
+  height: 100%;
+  opacity: var(--wave-opacity, 0.4);
+  animation: waveScroll var(--wave-speed, 10s) linear infinite;
+  animation-delay: var(--wave-offset, 0px); /* misuse: delay instead */
+}
+
+@keyframes waveScroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.oceanBase {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 65%;
+  background: linear-gradient(180deg, #3a8fc2 0%, #1e6a9a 50%, #135580 100%);
+  opacity: 0.75;
+}
+
+/* ── Bokeh / light flecks ────────────────────────────────────────────────── */
+.bokeh {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.6) 0%, transparent 70%);
+  filter: blur(6px);
+  animation: bokehFloat ease-in-out infinite alternate;
+}
+
+@keyframes bokehFloat {
+  from { opacity: 0.2; transform: scale(0.8) translateY(0); }
+  to   { opacity: 0.5; transform: scale(1.2) translateY(-12px); }
+}

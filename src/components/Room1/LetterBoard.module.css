@@ -1,0 +1,58 @@
+.board {
+  background: transparent;
+  padding: 0;
+  text-align: right;
+}
+
+.label {
+  font-family: "Oswald", sans-serif;
+  font-size: 0.58rem;
+  letter-spacing: 0.3em;
+  color: #3a3028;
+  margin: 0 0 6px 0;
+  text-transform: uppercase;
+}
+
+.slots {
+  display: flex;
+  gap: 5px;
+  justify-content: flex-end;
+}
+
+.slot {
+  width: 2.2rem;
+  height: 2.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Oswald", sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.empty {
+  border: 1px dashed #1e1812;
+  color: #1e1812;
+}
+
+.found {
+  border: 1px solid #c8a97e55;
+  background: #1a1510;
+  color: #c8a97e;
+  box-shadow: 0 0 12px rgba(200, 169, 126, 0.2);
+  animation: popIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes popIn {
+  0%   { transform: scale(0) rotateY(90deg); opacity: 0; }
+  100% { transform: scale(1) rotateY(0deg);  opacity: 1; }
+}
+
+.count {
+  margin: 5px 0 0 0;
+  font-family: "Courier Prime", monospace;
+  font-size: 0.62rem;
+  color: #2a2218;
+  text-align: right;
+}

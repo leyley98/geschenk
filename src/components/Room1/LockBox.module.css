@@ -1,0 +1,128 @@
+.lockBox {
+  background: #0f0d0b;
+  border: 1px solid #1e1812;
+  padding: 36px 32px;
+  text-align: center;
+  transition: border-color 0.5s, box-shadow 0.5s;
+}
+
+.lockBox.unlocked {
+  border-color: #c8a97e55;
+  box-shadow: 0 0 40px rgba(200, 169, 126, 0.08), inset 0 0 40px rgba(200, 169, 126, 0.03);
+}
+
+.lockIcon {
+  font-size: 2rem;
+  margin-bottom: 12px;
+  opacity: 0.5;
+}
+
+.title {
+  font-family: "Oswald", sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.4em;
+  color: #3a3028;
+  margin: 0 0 8px 0;
+  text-transform: uppercase;
+}
+
+.hint {
+  font-family: "Courier Prime", monospace;
+  font-size: 0.78rem;
+  color: #4a3a28;
+  margin: 0 0 24px 0;
+  min-height: 1.2rem;
+  font-style: italic;
+}
+
+.form {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+.codeInput {
+  width: 8rem;
+  padding: 10px 8px;
+  background: #0a0807;
+  border: 1px solid #2a2218;
+  color: #c8a97e;
+  font-family: "Oswald", sans-serif;
+  font-size: 1.5rem;
+  letter-spacing: 0.5em;
+  text-align: center;
+  border-radius: 0;
+  text-transform: uppercase;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.codeInput:focus {
+  outline: none;
+  border-color: #c8a97e55;
+  box-shadow: 0 0 16px rgba(200, 169, 126, 0.08);
+}
+
+.codeInput::placeholder {
+  color: #1e1812;
+  letter-spacing: 0.5em;
+}
+
+.codeInput:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.inputWrong {
+  border-color: #8b3a3a !important;
+  animation: shake 0.4s ease;
+}
+
+.inputUnlocked {
+  border-color: #c8a97e !important;
+  box-shadow: 0 0 24px rgba(200, 169, 126, 0.2) !important;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%       { transform: translateX(-5px); }
+  60%       { transform: translateX(5px); }
+}
+
+.submitBtn {
+  padding: 10px 20px;
+  background: transparent;
+  border: 1px solid #2a2218;
+  color: #4a3a28;
+  font-family: "Oswald", sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+}
+
+.submitBtn:not(:disabled):hover {
+  border-color: #c8a97e;
+  color: #c8a97e;
+}
+
+.submitBtn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.feedbackWrong {
+  font-family: "Courier Prime", monospace;
+  font-size: 0.78rem;
+  color: #8b3a3a;
+  margin: 12px 0 0 0;
+  font-style: italic;
+}
+
+.feedbackOk {
+  font-family: "Courier Prime", monospace;
+  font-size: 0.85rem;
+  color: #c8a97e;
+  margin: 12px 0 0 0;
+  letter-spacing: 0.1em;
+}

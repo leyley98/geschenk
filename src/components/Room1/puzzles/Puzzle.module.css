@@ -1,0 +1,435 @@
+/* ── Shared puzzle styles ─────────────────────────────────── */
+
+.puzzle {
+  padding: 1.5rem;
+  background: #1e160a;
+  border: 1px solid #3a2a18;
+  border-radius: 2px;
+}
+
+.puzzleTitle {
+  font-family: "Oswald", sans-serif;
+  font-size: 1rem;
+  letter-spacing: 0.1em;
+  color: #e8a800;
+  margin: 0 0 0.5rem 0;
+  text-transform: uppercase;
+}
+
+.instruction {
+  font-family: "Courier Prime", monospace;
+  font-size: 0.85rem;
+  color: #c8a878;
+  margin: 0 0 1rem 0;
+  line-height: 1.6;
+}
+
+.subLabel {
+  font-family: "Courier Prime", monospace;
+  font-size: 0.78rem;
+  color: #7a5a38;
+  margin: 0.75rem 0 0.5rem 0;
+  font-style: italic;
+}
+
+/* ── Evidence button ──────────────────────────────────────── */
+.evidenceBtn {
+  background: #2a1e0e;
+  border: 1px solid #4a3520;
+  color: #c8a878;
+  font-family: "Courier Prime", monospace;
+  font-size: 0.82rem;
+  padding: 0.5rem 0.9rem;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: background 0.15s, border-color 0.15s;
+  margin-bottom: 1rem;
+}
+
+.evidenceBtn:hover {
+  background: #3a2a18;
+  border-color: #cc2200;
+}
+
+/* ── Document viewer ──────────────────────────────────────── */
+.document {
+  background: #f5e9c8;
+  border: 1px solid #c8b090;
+  padding: 1rem 1.25rem;
+  margin: 0 0 1rem 0;
+  border-radius: 2px;
+  font-family: "Courier Prime", monospace;
+  font-size: 0.83rem;
+  color: #2c1a00;
+  animation: fadeSlide 0.25s ease;
+}
+
+@keyframes fadeSlide {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.classified {
+  border-left: 4px solid #cc2200;
+}
+
+.docHeader {
+  font-family: "Oswald", sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  color: #2c1a00;
+  margin: 0 0 0.75rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.redStamp {
+  color: #cc2200;
+  border: 1px solid #cc2200;
+  padding: 0.05rem 0.3rem;
+  font-size: 0.65rem;
+}
+
+.reportText {
+  white-space: pre-wrap;
+  font-family: "Courier Prime", monospace;
+  font-size: 0.82rem;
+  margin: 0;
+  line-height: 1.7;
+}
+
+.logTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.83rem;
+}
+
+.logTable td {
+  padding: 0.3rem 0.5rem;
+  border-bottom: 1px solid #c8b09060;
+}
+
+.logTable td:first-child {
+  color: #6a4a28;
+  width: 40%;
+}
+
+.exitRow td {
+  color: #cc2200 !important;
+  font-weight: bold;
+}
+
+/* ── Statement buttons ────────────────────────────────────── */
+.statementList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.statement {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  background: #241a0c;
+  border: 1px solid #3a2a18;
+  padding: 0.75rem 1rem;
+  border-radius: 2px;
+  cursor: pointer;
+  text-align: left;
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.statement:hover:not(:disabled) {
+  border-color: #cc2200;
+  background: #2e1e0e;
+}
+
+.statement:disabled {
+  cursor: default;
+}
+
+.suspectName {
+  font-family: "Oswald", sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  color: #e8a800;
+  text-transform: uppercase;
+}
+
+.stmtText {
+  font-family: "Courier Prime", monospace;
+  font-size: 0.83rem;
+  color: #c8a878;
+  line-height: 1.55;
+  font-style: italic;
+}
+
+.wrong {
+  border-color: #cc220088 !important;
+  background: #2a0a08 !important;
+  animation: shake 0.4s ease;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-5px); }
+  60% { transform: translateX(5px); }
+}
+
+.solvedCorrect {
+  border-color: #e8a800 !important;
+  background: #2a1e00 !important;
+}
+
+/* ── Feedback ─────────────────────────────────────────────── */
+.feedbackWrong {
+  font-family: "Courier Prime", monospace;
+  font-size: 0.78rem;
+  color: #cc5500;
+  margin: 0.6rem 0 0 0;
+}
+
+.checkBtn {
+  margin-top: 1rem;
+  background: transparent;
+  border: 1px solid #4a3520;
+  color: #c8a878;
+  font-family: "Courier Prime", monospace;
+  font-size: 0.83rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: border-color 0.15s, color 0.15s;
+}
+
+.checkBtn:hover {
+  border-color: #e8a800;
+  color: #e8a800;
+}
+
+/* ── Reveal box ───────────────────────────────────────────── */
+.revealBox {
+  margin-top: 1.25rem;
+  padding: 1rem;
+  background: #0f0a02;
+  border: 1px solid #e8a80044;
+  border-radius: 2px;
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  animation: fadeSlide 0.4s ease;
+}
+
+.revealLetter {
+  font-family: "Oswald", sans-serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #e8a800;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.revealBox p {
+  font-family: "Courier Prime", monospace;
+  font-size: 0.82rem;
+  color: #c8a878;
+  margin: 0;
+  line-height: 1.65;
+}
+
+/* ── Highlight letter ─────────────────────────────────────── */
+.highlightLetter {
+  color: #e8a800;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+/* ── Timeline ─────────────────────────────────────────────── */
+.timelineList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 1rem;
+}
+
+.timelineItem {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: #241a0c;
+  border: 1px solid #3a2a18;
+  padding: 0.6rem 0.9rem;
+  border-radius: 2px;
+  cursor: grab;
+  transition: border-color 0.15s, background 0.15s;
+  user-select: none;
+}
+
+.timelineItem:hover {
+  border-color: #5a4030;
+}
+
+.dragging {
+  border-color: #e8a800 !important;
+  background: #2e2010 !important;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+  cursor: grabbing;
+}
+
+.suspicious {
+  border-left: 3px solid #cc2200;
+}
+
+.solvedItem {
+  cursor: default;
+}
+
+.timeTag {
+  font-family: "Oswald", sans-serif;
+  font-size: 0.78rem;
+  color: #e8a800;
+  white-space: nowrap;
+  min-width: 5.5rem;
+}
+
+.evtText {
+  font-family: "Courier Prime", monospace;
+  font-size: 0.83rem;
+  color: #c8a878;
+  flex: 1;
+}
+
+.dragHint {
+  color: #4a3520;
+  font-size: 1.1rem;
+}
+
+.detailBox {
+  background: #f5e9c8;
+  border: 1px solid #c8b090;
+  padding: 0.75rem 1rem;
+  margin: 0 0 0.75rem 0;
+  border-radius: 2px;
+  font-family: "Courier Prime", monospace;
+  font-size: 0.82rem;
+  color: #2c1a00;
+  line-height: 1.6;
+  animation: fadeSlide 0.2s ease;
+}
+
+.detailText {
+  margin: 0 0 0.5rem 0;
+}
+
+.suspiciousNote {
+  color: #cc2200;
+  font-weight: bold;
+  margin: 0;
+}
+
+/* ── Receipt / transactions ───────────────────────────────── */
+.suspectBlock {
+  margin-bottom: 1rem;
+}
+
+.suspectBlockName {
+  font-family: "Oswald", sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  color: #7a5a38;
+  text-transform: uppercase;
+  margin: 0 0 0.4rem 0;
+}
+
+.txWrapper {
+  margin-bottom: 0.4rem;
+}
+
+.txRow {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: #241a0c;
+  border: 1px solid #3a2a18;
+  padding: 0.55rem 0.9rem;
+  border-radius: 2px;
+  cursor: pointer;
+  text-align: left;
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.txRow:hover:not(:disabled) {
+  border-color: #5a4030;
+  background: #2e1e0e;
+}
+
+.txRow:disabled {
+  cursor: default;
+}
+
+.suspiciousTx {
+  border-left: 3px solid #cc220066;
+}
+
+.txTime {
+  font-family: "Oswald", sans-serif;
+  font-size: 0.75rem;
+  color: #e8a800;
+  white-space: nowrap;
+  min-width: 5rem;
+}
+
+.txLocation {
+  font-family: "Courier Prime", monospace;
+  font-size: 0.82rem;
+  color: #c8a878;
+  flex: 1;
+}
+
+.txAmount {
+  font-family: "Courier Prime", monospace;
+  font-size: 0.82rem;
+  color: #8a7060;
+  white-space: nowrap;
+}
+
+.txExpand {
+  color: #5a4030;
+  font-size: 0.7rem;
+}
+
+.txDetail {
+  background: #f5e9c8;
+  border: 1px solid #c8b090;
+  border-top: none;
+  padding: 0.75rem 1rem;
+  font-family: "Courier Prime", monospace;
+  font-size: 0.82rem;
+  color: #2c1a00;
+  line-height: 1.6;
+  animation: fadeSlide 0.2s ease;
+}
+
+.txDetail p {
+  margin: 0 0 0.5rem 0;
+}
+
+.markSuspicious {
+  background: transparent;
+  border: 1px solid #cc2200;
+  color: #cc2200;
+  font-family: "Courier Prime", monospace;
+  font-size: 0.78rem;
+  padding: 0.3rem 0.7rem;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: background 0.15s, color 0.15s;
+}
+
+.markSuspicious:hover {
+  background: #cc2200;
+  color: #f5e9c8;
+}

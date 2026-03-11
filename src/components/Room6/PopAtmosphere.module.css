@@ -1,0 +1,66 @@
+/* ── Pop Room Atmosphere ────────────────────────────────────────────────── */
+.atmosphere {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+/* ── Glow blobs ────────────────────────────────────────────────────────── */
+.glow1 {
+  position: absolute;
+  top: -10%;
+  left: -10%;
+  width: 50vw;
+  height: 50vw;
+  max-width: 600px;
+  max-height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(232, 121, 249, 0.18) 0%, transparent 70%);
+}
+
+.glow2 {
+  position: absolute;
+  top: 30%;
+  right: -8%;
+  width: 40vw;
+  height: 40vw;
+  max-width: 500px;
+  max-height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(244, 114, 182, 0.14) 0%, transparent 70%);
+}
+
+.glow3 {
+  position: absolute;
+  bottom: 5%;
+  left: 30%;
+  width: 35vw;
+  height: 35vw;
+  max-width: 450px;
+  max-height: 450px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(196, 132, 252, 0.12) 0%, transparent 70%);
+}
+
+/* ── Sparkle particles - static, just opacity ─────────────────────────── */
+.sparkle {
+  position: absolute;
+  opacity: 0.55;
+}
+
+/* ── Rising glitter dots - hidden (no more rising animation) ────────────── */
+.glitterDot {
+  display: none;
+}
+
+/* ── Floor glow ────────────────────────────────────────────────────────── */
+.floorGlow {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 180px;
+  background: linear-gradient(to top, rgba(232, 121, 249, 0.08) 0%, transparent 100%);
+}

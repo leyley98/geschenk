@@ -1,0 +1,275 @@
+.room {
+  min-height: 100vh;
+  background:
+    radial-gradient(ellipse at 50% 0%,  rgba(180, 130, 20, 0.10) 0%, transparent 45%),
+    radial-gradient(ellipse at 20% 80%, rgba(80,  45,  5,  0.12) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 60%, rgba(100, 30,  0,  0.08) 0%, transparent 50%),
+    linear-gradient(180deg, #0b0703 0%, #080402 100%);
+  color: #c8b88a;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 48px;
+}
+
+/* ── Ambient candle-light top glow ─────────────────────────────────────── */
+.room::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 200px;
+  background: radial-gradient(ellipse at 50% 0%, rgba(212, 160, 23, 0.04) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* ── Header ─────────────────────────────────────────────────────────────── */
+.header {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 16px 24px 14px;
+  border-bottom: 1px solid #2a1a0a;
+  background: rgba(5, 3, 1, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  position: relative;
+  z-index: 10;
+}
+
+/* Fantasy logo / crest */
+.fantasyLogo {
+  height: 64px;
+  width: auto;
+  flex-shrink: 0;
+  filter:
+    brightness(0) sepia(1) saturate(4) hue-rotate(10deg)
+    drop-shadow(0 0 12px rgba(212, 160, 23, 0.7))
+    drop-shadow(0 0 30px rgba(212, 160, 23, 0.3));
+  opacity: 0.92;
+}
+
+.headerLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.roomTag {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: #6b4020;
+}
+
+.roomTitle {
+  margin: 0;
+  font-family: 'Oswald', sans-serif;
+  font-size: clamp(1.8rem, 5vw, 2.8rem);
+  font-weight: 700;
+  letter-spacing: 6px;
+  line-height: 1;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, #fef3c7 0%, #d4a017 40%, #8b6914 70%, #d4a017 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 20px rgba(212, 160, 23, 0.4));
+}
+
+.subtitle {
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.72rem;
+  color: #5a3218;
+  letter-spacing: 0.5px;
+}
+
+/* ── Rune bar ─────────────────────────────────────────────────────────────── */
+.runeBar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 24px;
+  border-bottom: 1px solid #1a0e06;
+  background: rgba(6, 4, 2, 0.5);
+  flex-wrap: wrap;
+}
+
+.runeBarLabel {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #5a3218;
+  flex-shrink: 0;
+}
+
+.runeSlots {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.runeSlot {
+  width: 38px;
+  height: 42px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  transition: all 0.3s ease;
+  cursor: default;
+}
+
+.runeSlotEmpty {
+  background: #1a0e06;
+  border: 1.5px dashed #3a2208;
+  color: #3a2208;
+  font-size: 0.75rem;
+  font-family: 'Courier Prime', monospace;
+}
+
+.runeSlotFilled {
+  background: radial-gradient(circle, #8b6914, #5c3d00);
+  border: 1.5px solid #d4a017;
+  color: #fef3c7;
+  box-shadow: 0 0 12px rgba(212, 160, 23, 0.4);
+  animation: runeIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes runeIn {
+  from { transform: scale(0.5) rotate(-15deg); opacity: 0; }
+  to   { transform: scale(1)   rotate(0);       opacity: 1; }
+}
+
+/* ── Hint ─────────────────────────────────────────────────────────────────── */
+.hint {
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.8rem;
+  color: #5a3218;
+  text-align: center;
+  padding: 8px 24px 0;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* ── Main bookshelf area ──────────────────────────────────────────────────── */
+.main {
+  flex: 1;
+  padding: 20px 0 0;
+}
+
+/* ── Code section ─────────────────────────────────────────────────────────── */
+.codeSection {
+  margin: 24px auto 0;
+  max-width: 540px;
+  width: 100%;
+  padding: 20px 24px;
+  background: #0e0804;
+  border: 1px solid #8b6914;
+  border-radius: 12px;
+  box-shadow: 0 0 30px rgba(139, 105, 20, 0.2);
+  animation: codeReveal 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes codeReveal {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.codeLabel {
+  font-family: 'Caveat', cursive;
+  font-size: 1.05rem;
+  color: #d4a017;
+  margin: 0 0 14px;
+  text-align: center;
+  line-height: 1.4;
+}
+
+.codeRow {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.codeInput {
+  background: #060402;
+  border: 1.5px solid #5a3218;
+  border-radius: 8px;
+  color: #fef3c7;
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  padding: 10px 16px;
+  width: 190px;
+  text-align: center;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.codeInput:focus {
+  border-color: #d4a017;
+  box-shadow: 0 0 0 2px rgba(212, 160, 23, 0.15);
+}
+
+.codeInputError {
+  border-color: #8b2020;
+  color: #f87171;
+}
+
+.codeBtn {
+  background: linear-gradient(135deg, #5c3d00, #8b6914);
+  border: none;
+  border-radius: 8px;
+  color: #fef3c7;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.95rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 12px 22px;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+  box-shadow: 0 4px 14px rgba(139, 105, 20, 0.35);
+}
+
+.codeBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 7px 20px rgba(139, 105, 20, 0.45);
+}
+
+.codeErrorMsg {
+  margin: 10px 0 0;
+  text-align: center;
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.8rem;
+  color: #8b3020;
+  font-style: italic;
+}
+
+.shake {
+  animation: shake 0.5s ease;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%       { transform: translateX(-6px); }
+  40%       { transform: translateX(6px); }
+  60%       { transform: translateX(-4px); }
+  80%       { transform: translateX(4px); }
+}
+
+/* ── Responsive ──────────────────────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .header { padding: 14px 14px 10px; }
+  .runeBar { padding: 8px 14px; }
+  .codeSection { margin: 16px 12px 0; }
+}

@@ -1,0 +1,696 @@
+/* ════════════════════════════════════════════════════════════
+   SCUDERIA FERRARI - PIT WALL COMMAND CENTER
+   Rosso Corsa · Giallo Modena · Monza
+════════════════════════════════════════════════════════════ */
+
+/* ── Base room - BRIGHT Rosso Corsa sky ──────────────────── */
+.room {
+  min-height: 100vh;
+  background: linear-gradient(
+    180deg,
+    #8b0000 0%,
+    #b80000 12%,
+    #dc0000 28%,
+    #f02020 46%,
+    #ff3030 60%,
+    #e80000 76%,
+    #c00000 88%,
+    #960000 100%
+  );
+  color: #1a0000;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 56px;
+  position: relative;
+  overflow: hidden;
+  font-family: 'Barlow Condensed', 'Oswald', sans-serif;
+}
+
+/* White grid overlay (visible on bright red) */
+.room::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── LED strip ──────────────────────────────────────────── */
+.ledStrip {
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    #3a0000 0%,
+    #8b0000 10%,
+    #dc0000 20%,
+    #ff2020 30%,
+    #ff6600 40%,
+    #ffd700 50%,
+    #ff6600 60%,
+    #ff2020 70%,
+    #dc0000 80%,
+    #8b0000 90%,
+    #3a0000 100%
+  );
+  background-size: 200% auto;
+  animation: ledScroll 3s linear infinite;
+  position: relative;
+  z-index: 3;
+  box-shadow: 0 0 18px rgba(255,215,0,0.7), 0 0 40px rgba(255,215,0,0.2);
+}
+
+@keyframes ledScroll {
+  from { background-position: 0% center; }
+  to   { background-position: 200% center; }
+}
+
+/* ── Header - dark frosted glass on bright red ───────────── */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 28px 16px;
+  border-bottom: 1px solid rgba(0,0,0,0.15);
+  background: rgba(0, 0, 0, 0.42);
+  backdrop-filter: blur(24px) saturate(1.4);
+  -webkit-backdrop-filter: blur(24px) saturate(1.4);
+  position: relative;
+  z-index: 2;
+  flex-wrap: wrap;
+}
+
+.header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 0%, rgba(255,215,0,0.05) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex: 1;
+  min-width: 0;
+}
+
+.headerBranding {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.roomTag {
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: #ffd700;
+  opacity: 0.9;
+}
+
+.roomTitle {
+  margin: 0;
+  font-family: 'Barlow Condensed', 'Oswald', sans-serif;
+  font-size: clamp(1.6rem, 5vw, 2.6rem);
+  font-weight: 900;
+  letter-spacing: 8px;
+  text-transform: uppercase;
+  line-height: 1;
+  background: linear-gradient(90deg,
+    #ffd700 0%,
+    #ffe766 25%,
+    #ffffff 50%,
+    #ffe766 75%,
+    #ffd700 100%
+  );
+  background-size: 250% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: titleShimmer 5s linear infinite;
+}
+
+@keyframes titleShimmer {
+  from { background-position: 0% center; }
+  to   { background-position: 250% center; }
+}
+
+.location {
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.7rem;
+  color: rgba(255,255,255,0.4);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+/* ── Monza circuit watermark ────────────────────────────── */
+.monzaWatermark {
+  position: fixed;
+  top: 50%;
+  left: 38%;
+  transform: translate(-50%, -50%);
+  width: 62%;
+  max-width: 760px;
+  opacity: 0.07;
+  filter: brightness(0) invert(1);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ── Signature corner decoration ───────────────────────── */
+.signatureCorner {
+  position: fixed;
+  bottom: 24px;
+  left: 28px;
+  width: 220px;
+  height: auto;
+  opacity: 0.35;
+  filter: brightness(0) invert(1);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* ── Driver atmospheric image ───────────────────────────── */
+.driverImg {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  height: 92vh;
+  max-height: 860px;
+  width: auto;
+  opacity: 0.28;
+  pointer-events: none;
+  z-index: 1;
+  object-fit: contain;
+  object-position: bottom right;
+  -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 30%, rgba(0,0,0,0.2) 65%, transparent 85%);
+  mask-image: linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 30%, rgba(0,0,0,0.2) 65%, transparent 85%);
+}
+
+/* Prancing horse / SF shield container */
+.horseWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+  border: 1px solid rgba(255,215,0,0.3);
+  background: rgba(0,0,0,0.3);
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.horseWrap::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(255,215,0,0.08), transparent 70%);
+  pointer-events: none;
+}
+
+/* Actual Ferrari logo image */
+.ferrariLogo {
+  height: 54px;
+  width: auto;
+  display: block;
+  position: relative;
+  z-index: 1;
+  filter: drop-shadow(0 0 8px rgba(255,215,0,0.3));
+}
+
+/* F1 logo in header */
+.f1Logo {
+  height: 30px;
+  width: auto;
+  flex-shrink: 0;
+  filter: brightness(0) invert(1);
+  opacity: 0.8;
+}
+
+/* ── Header stats panel ─────────────────────────────────── */
+.headerStats {
+  display: flex;
+  gap: 1px;
+  background: rgba(255,215,0,0.2);
+  border: 1px solid rgba(255,215,0,0.3);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.statBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  background: rgba(0,0,0,0.45);
+  gap: 1px;
+  min-width: 64px;
+}
+
+.statBlock + .statBlock {
+  border-left: 1px solid rgba(255,215,0,0.15);
+}
+
+.statNum {
+  font-family: 'Barlow Condensed', 'Oswald', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: #ffd700;
+  line-height: 1;
+  letter-spacing: 1px;
+}
+
+.statLabel {
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.56rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+}
+
+.statDivider { display: none; }
+
+/* ── Letter inventory ───────────────────────────────────── */
+.inventory {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 10px 28px;
+  border-bottom: 1px solid rgba(0,0,0,0.12);
+  background: rgba(0,0,0,0.28);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  position: relative;
+  z-index: 2;
+  flex-wrap: wrap;
+}
+
+.inventoryLabel {
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  flex-shrink: 0;
+}
+
+.slots {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+
+.slot {
+  width: 44px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Barlow Condensed', 'Oswald', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 900;
+  letter-spacing: 0;
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  clip-path: polygon(0 0, 90% 0, 100% 10%, 100% 100%, 10% 100%, 0 90%);
+}
+
+.slotEmpty {
+  background: rgba(0,0,0,0.25);
+  border: 1px dashed rgba(255,255,255,0.25);
+  color: rgba(255,255,255,0.25);
+  font-size: 0.75rem;
+  font-family: 'Courier Prime', monospace;
+}
+
+.slotFilled {
+  background: linear-gradient(135deg, #8b0000 0%, #dc0000 50%, #ff2020 100%);
+  border: 1px solid #ff4d4d;
+  color: #fff;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+  box-shadow:
+    0 0 16px rgba(0,0,0,0.4),
+    0 0 40px rgba(220,0,0,0.3),
+    inset 0 1px 0 rgba(255,255,255,0.25);
+  animation: slotPop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes slotPop {
+  from { transform: scale(0.3) rotate(-20deg); opacity: 0; }
+  to   { transform: scale(1) rotate(0); opacity: 1; }
+}
+
+/* ── Pit wall main section ──────────────────────────────── */
+.pitWall {
+  flex: 1;
+  padding: 24px 20px 0;
+  position: relative;
+  z-index: 2;
+  max-width: 960px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.hint {
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.5);
+  text-align: center;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin: 0 0 20px;
+}
+
+/* ── Challenge grid ─────────────────────────────────────── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+/* ── Challenge tile - dark glass on bright red ──────────── */
+.tile {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+  padding: 14px 14px 18px;
+  text-align: left;
+  cursor: pointer;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.25s ease, border-color 0.2s;
+  clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 0 100%);
+  background: rgba(0, 0, 0, 0.62);
+  border: 1px solid transparent;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* Left gold accent border */
+.tile::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(to bottom, #ffd700, #cc8800);
+  z-index: 2;
+}
+
+/* Corner cut fill */
+.tile::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 16px;
+  height: 16px;
+  background: rgba(255,215,0,0.25);
+  clip-path: polygon(100% 0, 0 0, 100% 100%);
+  z-index: 2;
+}
+
+.tileActive {
+  border-color: rgba(255,255,255,0.1);
+  background: rgba(0, 0, 0, 0.65);
+}
+
+.tileActive:hover {
+  transform: translateY(-4px) scale(1.01);
+  border-color: rgba(255,215,0,0.4);
+  box-shadow:
+    0 16px 48px rgba(0,0,0,0.5),
+    0 0 30px rgba(0,0,0,0.3),
+    inset 0 0 30px rgba(255,215,0,0.03);
+}
+
+.tileActive:hover .tileGlow {
+  opacity: 1;
+}
+
+.tileActive:active {
+  transform: translateY(-2px);
+}
+
+.tileSolved {
+  border-color: rgba(34,197,94,0.15);
+  background: rgba(0, 0, 0, 0.45);
+  cursor: default;
+  opacity: 0.7;
+}
+
+.tileSolved::before {
+  background: linear-gradient(to bottom, #22c55e, #15803d);
+}
+
+.tileIndex {
+  position: absolute;
+  top: 8px;
+  left: 10px;
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 2px;
+  color: rgba(255,215,0,0.4);
+}
+
+.tileStatus {
+  position: absolute;
+  top: 8px;
+  right: 22px;
+  font-size: 0.7rem;
+  font-family: 'Courier Prime', monospace;
+  color: rgba(255,255,255,0.3);
+  letter-spacing: 1px;
+}
+
+.tileSolved .tileStatus {
+  color: #22c55e;
+}
+
+.tileEmoji {
+  font-size: 1.7rem;
+  line-height: 1;
+  margin-top: 18px;
+  margin-bottom: 4px;
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.4));
+}
+
+.tileTitle {
+  font-family: 'Barlow Condensed', 'Oswald', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #ffffff;
+  line-height: 1.1;
+}
+
+.tileSolved .tileTitle {
+  color: rgba(255,255,255,0.4);
+}
+
+.tileSubtitle {
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.62rem;
+  color: rgba(255,255,255,0.3);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+/* Solved letter badge */
+.tileLetter {
+  position: absolute;
+  bottom: 8px;
+  right: 14px;
+  font-family: 'Barlow Condensed', 'Oswald', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 900;
+  background: linear-gradient(135deg, #ffd700, #ffee88);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 6px rgba(255,215,0,0.5));
+}
+
+.tileGlow {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #ffd700, transparent);
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+
+.tileSolved .tileGlow {
+  opacity: 0.5;
+  background: linear-gradient(90deg, transparent, #22c55e, transparent);
+}
+
+/* ── Code section ───────────────────────────────────────── */
+.codeSection {
+  margin: 28px auto 0;
+  max-width: 560px;
+  width: calc(100% - 40px);
+  padding: 24px 28px;
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255,215,0,0.25);
+  position: relative;
+  z-index: 2;
+  animation: sectionReveal 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px));
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 0 60px rgba(0,0,0,0.3);
+}
+
+.codeSection::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,215,0,0.04), transparent 60%);
+  pointer-events: none;
+}
+
+@keyframes sectionReveal {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.codeLabel {
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.7rem;
+  color: rgba(255,255,255,0.45);
+  letter-spacing: 3px;
+  text-align: center;
+  margin: 0 0 18px;
+  text-transform: uppercase;
+}
+
+.codeLabel::before {
+  content: '▶  ';
+  color: #ffd700;
+}
+
+.codeRow {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: stretch;
+}
+
+.codeInput {
+  background: rgba(0,0,0,0.5);
+  border: 1px solid rgba(255,215,0,0.3);
+  border-right: none;
+  color: #ffd700;
+  font-family: 'Barlow Condensed', 'Oswald', sans-serif;
+  font-size: 1.7rem;
+  font-weight: 900;
+  letter-spacing: 8px;
+  text-transform: uppercase;
+  padding: 10px 16px;
+  width: 210px;
+  text-align: center;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 8px 100%, 0 calc(100% - 8px));
+}
+
+.codeInput:focus {
+  border-color: #ffd700;
+  box-shadow: 0 0 0 1px rgba(255,215,0,0.2), 0 0 20px rgba(255,215,0,0.1);
+  color: #ffe766;
+}
+
+.codeInput::placeholder {
+  color: rgba(255,215,0,0.2);
+  letter-spacing: 8px;
+}
+
+.codeInputError {
+  border-color: #ff4d4d;
+  color: #ff8888 !important;
+}
+
+.codeBtn {
+  background: linear-gradient(135deg, #8b0000, #dc0000);
+  border: none;
+  color: #fff;
+  font-family: 'Barlow Condensed', 'Oswald', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  padding: 0 22px;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s, filter 0.15s;
+  box-shadow: 0 0 20px rgba(0,0,0,0.4);
+  clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
+  position: relative;
+}
+
+.codeBtn::before {
+  content: '▶  ';
+  font-size: 0.65rem;
+}
+
+.codeBtn:hover {
+  filter: brightness(1.2);
+  box-shadow: 0 0 30px rgba(220,0,0,0.5);
+}
+
+.codeBtn:active {
+  transform: scale(0.98);
+}
+
+.codeErrorMsg {
+  margin: 12px 0 0;
+  text-align: center;
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.75rem;
+  color: #ff8888;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.codeErrorMsg::before {
+  content: '✕  ';
+}
+
+/* ── Shake ──────────────────────────────────────────────── */
+.shake {
+  animation: shake 0.5s ease;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%       { transform: translateX(-8px); }
+  40%       { transform: translateX(8px); }
+  60%       { transform: translateX(-5px); }
+  80%       { transform: translateX(5px); }
+}
+
+/* ── Responsive ─────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .grid { grid-template-columns: repeat(2, 1fr); }
+  .header { padding: 14px 16px 12px; }
+  .pitWall { padding: 16px 12px 0; }
+  .slot { width: 38px; height: 44px; font-size: 1.3rem; }
+}
+
+@media (max-width: 400px) {
+  .grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .codeSection { margin: 16px 10px 0; width: auto; }
+}

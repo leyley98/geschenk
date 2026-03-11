@@ -1,0 +1,392 @@
+/* ── Room Layout ──────────────────────────────────────────── */
+
+.room {
+  min-height: 100vh;
+  background: #0f0a06;
+  background-image:
+    radial-gradient(ellipse at 20% 0%, #1a0a0422 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 100%, #0a0a1422 0%, transparent 60%);
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Header ───────────────────────────────────────────────── */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid #2a1e10;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.caseTag {
+  font-family: "Oswald", sans-serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  color: #cc2200;
+  border: 1px solid #cc2200;
+  padding: 0.1rem 0.4rem;
+}
+
+.caseTitle {
+  font-family: "Oswald", sans-serif;
+  font-size: 1.4rem;
+  color: #f5e9c8;
+  margin: 0;
+  letter-spacing: 0.05em;
+}
+
+/* ── Tab nav ──────────────────────────────────────────────── */
+.tabNav {
+  display: flex;
+  border-bottom: 1px solid #2a1e10;
+  overflow-x: auto;
+  flex-shrink: 0;
+}
+
+.tabBtn {
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  padding: 0.75rem 1.25rem;
+  font-family: "Courier Prime", monospace;
+  font-size: 0.82rem;
+  color: #5a4030;
+  cursor: pointer;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.tabBtn:hover {
+  color: #c8a878;
+}
+
+.tabActive {
+  color: #e8a800 !important;
+  border-bottom-color: #e8a800;
+}
+
+.puzzleCount {
+  background: #2a1e0e;
+  border: 1px solid #4a3520;
+  border-radius: 9999px;
+  font-size: 0.68rem;
+  padding: 0.05rem 0.4rem;
+  color: #8a7060;
+}
+
+/* ── Main content ─────────────────────────────────────────── */
+.main {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1.5rem;
+  max-width: 720px;
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.panelHint {
+  font-family: "Courier Prime", monospace;
+  font-size: 0.78rem;
+  color: #5a4030;
+  font-style: italic;
+  margin: 0;
+}
+
+/* ── Fallakte ─────────────────────────────────────────────── */
+.caseDoc {
+  background: #f5e9c8;
+  border-radius: 2px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.caseDocHeader {
+  background: #ede0bb;
+  border-bottom: 2px solid #c8b090;
+  padding: 0.85rem 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.caseDocHeader h2 {
+  font-family: "Oswald", sans-serif;
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+  color: #2c1a00;
+  margin: 0;
+}
+
+.stamp {
+  font-family: "Oswald", sans-serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  color: #cc2200;
+  border: 1px solid #cc2200;
+  padding: 0.1rem 0.4rem;
+  transform: rotate(-2deg);
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.caseText {
+  padding: 1.25rem;
+  font-family: "Courier Prime", monospace;
+  font-size: 0.87rem;
+  color: #2c1a00;
+  white-space: pre-wrap;
+  line-height: 1.75;
+  margin: 0;
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid #c8b090;
+  margin: 0 1.25rem;
+}
+
+.dictationBtn {
+  margin: 1rem 1.25rem;
+  background: #2c1a00;
+  border: 1px solid #4a3520;
+  color: #c8a878;
+  font-family: "Courier Prime", monospace;
+  font-size: 0.82rem;
+  padding: 0.5rem 0.9rem;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: background 0.15s;
+}
+
+.dictationBtn:hover {
+  background: #3a2a18;
+}
+
+.dictation {
+  margin: 0 1.25rem 1.25rem;
+  background: #ede0bb;
+  border: 1px dashed #c8b090;
+  border-radius: 2px;
+  padding: 0.85rem 1rem;
+  animation: fadeSlide 0.25s ease;
+}
+
+@keyframes fadeSlide {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.dictationMeta {
+  font-family: "Courier Prime", monospace;
+  font-size: 0.72rem;
+  color: #8a6040;
+  margin: 0 0 0.5rem 0;
+}
+
+.dictationText {
+  font-family: "Courier Prime", monospace;
+  font-size: 0.85rem;
+  color: #2c1a00;
+  white-space: pre-wrap;
+  line-height: 1.7;
+  margin: 0;
+  font-style: italic;
+}
+
+/* ── Verdächtige ──────────────────────────────────────────── */
+.suspectGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.suspectCard {
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.suspectBtn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  background: #1e160a;
+  border: 1px solid #3a2a18;
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.suspectBtn:hover {
+  background: #2a1e0e;
+  border-color: #5a4030;
+}
+
+.suspectOpen {
+  background: #2a1e0e !important;
+  border-color: #e8a800 !important;
+}
+
+.suspectPhoto {
+  font-size: 1.8rem;
+}
+
+.suspectMeta {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.suspectName {
+  font-family: "Oswald", sans-serif;
+  font-size: 0.95rem;
+  color: #f5e9c8;
+  letter-spacing: 0.04em;
+}
+
+.suspectRole {
+  font-family: "Courier Prime", monospace;
+  font-size: 0.75rem;
+  color: #7a5a38;
+}
+
+.expandArrow {
+  color: #5a4030;
+  font-size: 0.75rem;
+}
+
+.suspectDetails {
+  background: #f5e9c8;
+  border: 1px solid #c8b090;
+  border-top: none;
+  padding: 0.85rem 1.25rem;
+  font-family: "Courier Prime", monospace;
+  font-size: 0.83rem;
+  color: #2c1a00;
+  line-height: 1.7;
+}
+
+.suspectDetails ul {
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+.suspectDetails li {
+  margin-bottom: 0.3rem;
+}
+
+/* ── Puzzle Accordion ─────────────────────────────────────── */
+.puzzleAccordion {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.accordionItem {
+  border: 1px solid #3a2a18;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.accordionSolved {
+  border-color: #e8a80040;
+}
+
+.accordionHeader {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: #1e160a;
+  border: none;
+  padding: 0.85rem 1rem;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.15s;
+}
+
+.accordionHeader:hover {
+  background: #2a1e0e;
+}
+
+.accordionLetter {
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.letterFound {
+  font-family: "Oswald", sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #e8a800;
+  border: 1px solid #e8a80060;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.letterEmpty {
+  font-family: "Oswald", sans-serif;
+  font-size: 1.2rem;
+  color: #3a2a18;
+  border: 1px dashed #3a2a18;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.accordionLabel {
+  font-family: "Courier Prime", monospace;
+  font-size: 0.88rem;
+  color: #c8a878;
+  flex: 1;
+}
+
+.solvedBadge {
+  font-family: "Courier Prime", monospace;
+  font-size: 0.72rem;
+  color: #e8a800;
+  border: 1px solid #e8a80040;
+  padding: 0.1rem 0.4rem;
+  border-radius: 2px;
+}
+
+.accordionArrow {
+  color: #5a4030;
+  font-size: 0.75rem;
+}
+
+.accordionBody {
+  border-top: 1px solid #2a1e10;
+  animation: fadeSlide 0.2s ease;
+}

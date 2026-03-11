@@ -1,0 +1,191 @@
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(4, 3, 1, 0.82);
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  padding: 16px;
+  animation: fadeIn 0.15s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Parchment-style card */
+.card {
+  position: relative;
+  background: #f0e6c8;
+  border-radius: 4px 12px 12px 4px;
+  max-width: 460px;
+  width: 100%;
+  box-shadow:
+    0 0 0 2px #c8a87a,
+    0 8px 40px rgba(0, 0, 0, 0.7),
+    inset 0 0 60px rgba(200, 160, 80, 0.08);
+  animation: pageOpen 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+}
+
+@keyframes pageOpen {
+  from { transform: scale(0.94) rotateY(-8deg); opacity: 0; }
+  to   { transform: scale(1)    rotateY(0);      opacity: 1; }
+}
+
+/* Colored spine strip on left */
+.bookStrip {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 14px;
+  opacity: 0.9;
+}
+
+.closeBtn {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  background: none;
+  border: none;
+  color: #7a5828;
+  font-size: 15px;
+  cursor: pointer;
+  padding: 4px 6px;
+  border-radius: 4px;
+  transition: color 0.15s, background 0.15s;
+}
+.closeBtn:hover {
+  color: #2a1505;
+  background: rgba(0,0,0,0.08);
+}
+
+/* Header */
+.header {
+  padding: 22px 22px 0 30px;
+}
+
+.title {
+  margin: 0 0 6px;
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: #2a1505;
+  line-height: 1.2;
+}
+
+.meta {
+  margin: 0;
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.75rem;
+  color: #7a5828;
+  font-style: italic;
+}
+
+/* Ornamental divider */
+.ornament {
+  text-align: center;
+  color: #8b6914;
+  font-size: 1.4rem;
+  margin: 12px 0 10px;
+  opacity: 0.7;
+}
+
+/* Lore blurb */
+.blurb {
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.92rem;
+  line-height: 1.7;
+  color: #2a1505;
+  padding: 0 22px 0 30px;
+  margin: 0 0 20px;
+}
+
+/* ── Rune section ───────────────────────────────────────────────────────── */
+.runeSection {
+  margin: 0 22px 22px 30px;
+  border-radius: 8px;
+  padding: 14px;
+  text-align: center;
+}
+
+.runeNew {
+  background: linear-gradient(135deg, #2a1505, #3d2008);
+  border: 1px solid #8b6914;
+  animation: runeReveal 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s both;
+}
+
+.runeOld {
+  background: rgba(0,0,0,0.06);
+  border: 1px dashed #c8a87a;
+}
+
+@keyframes runeReveal {
+  from { transform: scale(0.8); opacity: 0; }
+  to   { transform: scale(1);   opacity: 1; }
+}
+
+.runeFoundLabel {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #d4a017;
+  margin: 0 0 10px;
+}
+
+.runeBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #8b6914, #5c3d00);
+  border: 2px solid #d4a017;
+  color: #fef3c7;
+  font-family: 'Oswald', sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  box-shadow: 0 0 20px rgba(212, 160, 23, 0.6);
+  margin: 0 auto 8px;
+}
+
+.runeBadgeSmall {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #2a1505;
+  border: 1px solid #8b6914;
+  color: #d4a017;
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 0 auto 6px;
+}
+
+.runeHint {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #d4a017;
+  opacity: 0.7;
+  margin: 0;
+}
+
+.runeAlready {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #8b6914;
+  margin: 0;
+}
