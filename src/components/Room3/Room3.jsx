@@ -108,7 +108,7 @@ export default function Room3({ onComplete }) {
   return (
     <div className={styles.room}>
       {/* Hidden audio element */}
-      <audio ref={audioRef} src={`${import.meta.env.BASE_URL}music/era.m4a`} loop preload="auto" />
+      <audio ref={audioRef} src={`${import.meta.env.BASE_URL}music/eras-tour.m4a`} loop preload="auto" />
 
       {/* Floating music button */}
       <button
